@@ -1,8 +1,10 @@
 const express = require('express');
+const port = process.env.port || 3000;
 const favicon = require('serve-favicon');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const path = require('path');
-const NodeCouchDb = require('node-couchdb') // https://www.npmjs.com/package/node-couchdb
+const NodeCouchDb = require('node-couchdb'); // https://www.npmjs.com/package/node-couchdb
 
 // CouchDB authentication
 const couch = new NodeCouchDb({
@@ -11,6 +13,9 @@ const couch = new NodeCouchDb({
         password: 'admin'
     }
 });
+
+const dbName = 'library';
+const viewUrl = '_design/books/_view/all';
 
 const app = express();
 
@@ -25,12 +30,26 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 
+// Cookie parser setup & setting static directory
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+
 // Render index page
 app.get('/', function (req, res) {
-    res.render('index');
+    couch.get(dbName, viewUrl).then(({
+        data,
+        headers,
+        status
+    }) => {
+        res.render('index', {
+            books: data.rows
+        });
+    }, err => {
+        res.send(err);
+    });
 });
 
 // Start app on port 3000
-app.listen(3000, function () {
-    console.log('Server started on port 3000');
+app.listen(port, function () {
+    console.log('Server started on port ' + port);
 });

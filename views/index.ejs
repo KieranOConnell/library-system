@@ -1,1 +1,25 @@
-Test
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Library System</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel='stylesheet' href='/stylesheets/bootstrap.min.css'>
+    <link rel='stylesheet' href='/stylesheets/font-awesome.min.css'>
+    <link rel='stylesheet' href='/stylesheets/style.css'>
+</head>
+
+<body>
+    <h1>Library System</h1>
+
+    <!-- Loop through array of objects (rows) to display list of books on screen *https://ejs.co/* -->
+    <ul>
+        <% books.forEach(function(books){ %>
+        <li><%= books.value.title %></li>
+        <% }); %>
+    </ul>
+</body>
+
+</html>
