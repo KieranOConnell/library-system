@@ -16,6 +16,11 @@
                 <ul>
     <!-- Loop through array of objects (rows) to display list of books on screen *https://ejs.co/* -->
                     <% books.forEach(function(book){ %>
+                        <h3><%= book.value.title %></h3>
+                        <form method="POST" action="/book/delete/<%= book.key %>">
+                            <input type="hidden" value="<%= book.value.rev %>" name="rev">
+                            <button type="submit" class="btn btn-outline-danger btn-sm">X</button>
+                        </form>
                     <ul class="book-details">
                         <li><span class="sub-heading">Author:</span>&nbsp;<%= book.value.author %></li>
                         <li><span class="sub-heading">Publisher(s):</span>&nbsp;<%= book.value.publishers %></li>

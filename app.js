@@ -89,6 +89,18 @@ app.post('/book/add', function (req, res) {
     });
 });
 
+// Delete book route
+app.post('/book/delete/:id', function(req, res) {
+    const id = req.params.id;
+    const rev = req.body.rev;
+
+    couch.del(dbName, id, rev).then(({data, headers, status}) => {
+        res.redirect('/');
+    }, err => {
+        res.send(err);
+    });
+});
+
 // Start app on port 3000
 app.listen(port, function () {
     console.log('Server started on port ' + port);
