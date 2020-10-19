@@ -49,6 +49,46 @@ app.get('/', function (req, res) {
     });
 });
 
+// Add book route
+app.post('/book/add', function (req, res) {
+    const title = req.body.title;
+    const author = req.body.author;
+    const publisher = req.body.publisher;
+    const pages = req.body.pages;
+    const genre = req.body.genre;
+    const protagonist = req.body.protagonist;
+    const antagonist = req.body.antagonist;
+    const release_date = req.body.release_date;
+    const rating = req.body.rating;
+
+    couch.uniqid().then(function (ids) {
+        const id = ids[0];
+
+        couch.insert(dbName, {
+            _id: id,
+            title: title,
+            author: author,
+            pages: pages,
+            publishers: [publisher],
+            characters: {
+                protagonist: protagonist,
+                antagonist: antagonist
+            },
+            genre: genre,
+            release_date: release_date,
+            rating: rating
+        }).then(({
+            data,
+            headers,
+            status
+        }) => {
+            res.redirect('/');
+        }, err => {
+            res.send(err);
+        });
+    });
+});
+
 // Start app on port 3000
 app.listen(port, function () {
     console.log('Server started on port ' + port);

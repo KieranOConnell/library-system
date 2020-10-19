@@ -13,8 +13,9 @@
 
 <body>
     <h1>Library System</h1>
-
+                <ul>
     <!-- Loop through array of objects (rows) to display list of books on screen *https://ejs.co/* -->
+                    <% books.forEach(function(book){ %>
                     <ul class="book-details">
                         <li><span class="sub-heading">Author:</span>&nbsp;<%= book.value.author %></li>
                         <li><span class="sub-heading">Publisher(s):</span>&nbsp;<%= book.value.publishers %></li>
@@ -29,6 +30,18 @@
                     </ul>
         <% }); %>
     </ul>
+                <form method="POST" action="/book/add">
+                    <input type="text" name="title" placeholder="Enter book title">
+                    <input type="text" name="author" placeholder="Enter book author">
+                    <input type="text" name="publisher" placeholder="Enter book publisher">
+                    <input type="text" name="pages" placeholder="Enter book pages">
+                    <input type="text" name="genre" placeholder="Enter book genre">
+                    <input type="text" name="protagonist" placeholder="Enter book protagonist">
+                    <input type="text" name="antagonist" placeholder="Enter book antagonist">
+                    <input type="text" name="release_date" placeholder="Enter book release date">
+                    <input type="text" name="rating" placeholder="Enter book rating">
+                    <input class="btn btn-primary" type="submit" value="Create">
+                </form>
 </body>
 
 </html>
