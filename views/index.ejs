@@ -15,9 +15,18 @@
     <h1>Library System</h1>
 
     <!-- Loop through array of objects (rows) to display list of books on screen *https://ejs.co/* -->
-    <ul>
-        <% books.forEach(function(books){ %>
-        <li><%= books.value.title %></li>
+                    <ul class="book-details">
+                        <li><span class="sub-heading">Author:</span>&nbsp;<%= book.value.author %></li>
+                        <li><span class="sub-heading">Publisher(s):</span>&nbsp;<%= book.value.publishers %></li>
+                        <li><span class="sub-heading">Pages:</span>&nbsp;<%= book.value.pages %></li>
+                        <li><span class="sub-heading">Genre:</span>&nbsp;<%= book.value.genre %></li>
+                        <li><span class="sub-heading">Protagonist:</span>&nbsp;<%= book.value.characters.protagonist %>
+                        </li>
+                        <li><span class="sub-heading">Antagonist:</span>&nbsp;<%= book.value.characters.antagonist %>
+                        </li>
+                        <li><span class="sub-heading">Release Date:</span>&nbsp;<%= book.value.release_date %></li>
+                        <li><span class="sub-heading">Rating:</span>&nbsp;<%= book.value.rating %></li>
+                    </ul>
         <% }); %>
     </ul>
 </body>
