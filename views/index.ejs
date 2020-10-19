@@ -12,15 +12,23 @@
 </head>
 
 <body>
-    <h1>Library System</h1>
+    <div class="container">
+        <div class="row">
+            <h1>Library System</h1>
+        </div>
+        <div class="row">
+            <div class="col-xs-6 col-md-4">
+                <h2>Book Details</h2>
                 <ul>
-    <!-- Loop through array of objects (rows) to display list of books on screen *https://ejs.co/* -->
+                    <!-- Loop through array of objects (rows) to display list of books on screen *https://ejs.co/* -->
                     <% books.forEach(function(book){ %>
+                    <div class="row">
                         <h3><%= book.value.title %></h3>
                         <form method="POST" action="/book/delete/<%= book.key %>">
                             <input type="hidden" value="<%= book.value.rev %>" name="rev">
                             <button type="submit" class="btn btn-outline-danger btn-sm">X</button>
                         </form>
+                    </div>
                     <ul class="book-details">
                         <li><span class="sub-heading">Author:</span>&nbsp;<%= book.value.author %></li>
                         <li><span class="sub-heading">Publisher(s):</span>&nbsp;<%= book.value.publishers %></li>
@@ -33,8 +41,13 @@
                         <li><span class="sub-heading">Release Date:</span>&nbsp;<%= book.value.release_date %></li>
                         <li><span class="sub-heading">Rating:</span>&nbsp;<%= book.value.rating %></li>
                     </ul>
-        <% }); %>
-    </ul>
+                    <% }); %>
+                </ul>
+            </div>
+            <div class="col-xs-6 col-md-4">
+                <div class="row">
+                    <h2>Add Book</h2>
+                </div>
                 <form method="POST" action="/book/add">
                     <input type="text" name="title" placeholder="Enter book title">
                     <input type="text" name="author" placeholder="Enter book author">
@@ -47,6 +60,14 @@
                     <input type="text" name="rating" placeholder="Enter book rating">
                     <input class="btn btn-primary" type="submit" value="Create">
                 </form>
+            </div>
+            <div class="col-xs-6 col-md-4">
+                <div class="row">
+                    <h2>Update Book</h2>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
