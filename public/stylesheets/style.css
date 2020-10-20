@@ -57,6 +57,7 @@ button {
 
 input {
   display: block;
+  width: 150%;
 }
 
 .btn-primary {

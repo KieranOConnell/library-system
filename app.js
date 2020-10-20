@@ -90,11 +90,54 @@ app.post('/book/add', function (req, res) {
 });
 
 // Delete book route
-app.post('/book/delete/:id', function(req, res) {
+app.post('/book/delete/:id', function (req, res) {
     const id = req.params.id;
     const rev = req.body.rev;
 
-    couch.del(dbName, id, rev).then(({data, headers, status}) => {
+    couch.del(dbName, id, rev).then(({
+        data,
+        headers,
+        status
+    }) => {
+        res.redirect('/');
+    }, err => {
+        res.send(err);
+    });
+});
+
+// Update book route
+app.post('/book/update', function (req, res) {
+    const id = req.body.bookId;
+    const rev = req.body.rev;
+    const title = req.body.title;
+    const author = req.body.author;
+    const publisher = req.body.publisher;
+    const pages = req.body.pages;
+    const genre = req.body.genre;
+    const protagonist = req.body.protagonist;
+    const antagonist = req.body.antagonist;
+    const release_date = req.body.release_date;
+    const rating = req.body.rating;
+
+    couch.update(dbName, {
+        _id: id,
+        _rev: rev,
+        title: title,
+        author: author,
+        pages: pages,
+        publishers: [publisher],
+        characters: {
+            protagonist: protagonist,
+            antagonist: antagonist
+        },
+        genre: genre,
+        release_date: release_date,
+        rating: rating
+    }).then(({
+        data,
+        headers,
+        status
+    }) => {
         res.redirect('/');
     }, err => {
         res.send(err);
