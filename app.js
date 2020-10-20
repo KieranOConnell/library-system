@@ -15,7 +15,8 @@ const couch = new NodeCouchDb({
 });
 
 const dbName = 'library';
-const viewUrl = '_design/books/_view/all';
+const allBooksView = '_design/books/_view/allBooks';
+const totalBooksView = '_design/books/_view/noBooks';
 
 const app = express();
 
@@ -36,13 +37,28 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Render index page
 app.get('/', function (req, res) {
-    couch.get(dbName, viewUrl).then(({
+    couch.get(dbName, allBooksView).then(({
         data,
         headers,
         status
     }) => {
         res.render('index', {
             books: data.rows
+        });
+    }, err => {
+        res.send(err);
+    });
+});
+
+// Render total books page
+app.post('/books/total', function (req, res) {
+    couch.get(dbName, totalBooksView).then(({
+        data,
+        headers,
+        status
+    }) => {
+        res.render('total', {
+            totals: data.rows
         });
     }, err => {
         res.send(err);

@@ -20,7 +20,12 @@
         <div class="row">
             <div class="col-xs-6 col-md-4">
                 <div class="row">
-                    <h2>Book Details</h2>
+                    <form method="POST" action="/books/total">
+                        <input class="btn btn-primary" type="submit" value="View Total No. Books">
+                    </form>
+                </div>
+                <div class="row">
+                    <h2 class="left">Book Details</h2>
                 </div>
                 <ul>
                     <!-- Loop through array of objects (rows) to display list of books on screen *https://ejs.co/* -->
@@ -72,8 +77,8 @@
                 </div>
                 <div class="row">
                     <form method="POST" action="/book/update">
-                        <input type="text" name="bookId" placeholder="Enter book ID you wish to update">   
-                        <input type="text" name="rev" placeholder="Enter book rev value">                   
+                        <input type="text" name="bookId" placeholder="Enter book ID you wish to update">
+                        <input type="text" name="rev" placeholder="Enter book rev value">
                         <input type="text" name="title" id="title" placeholder="Enter book title">
                         <input type="text" name="author" id="author" placeholder="Enter book author">
                         <input type="text" name="publisher" id="publisher" placeholder="Enter book publisher">
@@ -81,7 +86,8 @@
                         <input type="text" name="genre" id="genre" placeholder="Enter book genre">
                         <input type="text" name="protagonist" id="protagonist" placeholder="Enter book protagonist">
                         <input type="text" name="antagonist" id="antagonist" placeholder="Enter book antagonist">
-                        <input type="text" name="release_date" id="release_date" placeholder="Enter book release date (dd/MM/YYYY)">
+                        <input type="text" name="release_date" id="release_date"
+                            placeholder="Enter book release date (dd/MM/YYYY)">
                         <input type="text" name="rating" id="rating" placeholder="Enter book rating (?/5)">
                         <input class="btn btn-primary" type="submit" value="Update">
                     </form>

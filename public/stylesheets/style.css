@@ -21,7 +21,8 @@ h6 {
   font-family: 'Montserrat', sans-serif;
 }
 
-h1, h2 {
+h1,
+h2 {
   text-align: center;
   color: #ff0000;
   margin: 0 auto 1em auto;
@@ -29,9 +30,11 @@ h1, h2 {
 
 h2 {
   color: #03a5fc;
+  margin: 0 0 1em 0;
 }
 
-ul, ul .row {
+ul,
+ul .row {
   margin: 0;
   padding: 0;
 }
@@ -60,6 +63,40 @@ input {
   width: 150%;
 }
 
+input[type='submit'] {
+  cursor: pointer;
+}
+
+input[value='View Total No. Books'] {
+  margin: 0 0 2em 0;
+  padding: 2em;
+}
+
+input[value='Go back'] {
+  margin: 5em 0 0 0;
+  padding: 1em;
+  width: 100%;
+}
+
 .btn-primary {
   margin: 0.5em 0 0 0;
+}
+
+.center {
+  text-align: center;
+  margin: 0 auto;
+}
+
+h2.center {
+  margin: 0 auto 0.5em auto;
+}
+
+.left {
+  text-align: left;
+  margin: 0 0 1em 0.4em;
+}
+
+form[action='/'] {
+  display: block;
+  width: 100%;
 }

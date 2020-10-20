@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Library System</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel='stylesheet' href='/stylesheets/bootstrap.min.css'>
+    <link rel='stylesheet' href='/stylesheets/font-awesome.min.css'>
+    <link rel='stylesheet' href='/stylesheets/style.css'>
+    <script src='/javascripts/bootstrap.min.js'></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <h1>Library System</h1>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-md-12">
+                <div class="row">
+                    <h2 class="center">Total Books in the System</h2>
+                </div>
+                <% totals.forEach(function(total){ %>
+                <div class="row">
+                    <h3 class="center"><%= total.value %></h3>
+                    <% }); %>
+                </div>
+                <div class="row">
+                    <form method="GET" action="/">
+                        <input class="btn btn-danger" type="submit" value="Go back">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
